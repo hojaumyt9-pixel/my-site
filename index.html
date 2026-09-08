@@ -13,39 +13,73 @@
 </head>
 <body>
 
-    <div class="card">
-        <!-- Иконка или аватар -->
-        <div class="avatar">
-            <i class="fa-solid fa-user-astronaut"></i>
+    <!-- СТРАНИЦА 1: Только QR-код -->
+    <div id="page-qr" class="card active-screen">
+        <p class="title-top">Отсканируйте визитку</p>
+        <div class="qr-box" onclick="goToCard()">
+            <div id="qrcode"></div>
         </div>
-        
-        <!-- Ваше имя -->
+        <p class="hint-text">Нажмите на QR-код или перейдите далее</p>
+        <button class="btn-next" onclick="goToCard()">Открыть визитку <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+    <!-- СТРАНИЦА 2: Сама визитка с контактами -->
+    <div id="page-card" class="card hidden-screen">
         <h1>Umyt07</h1>
-        <p class="subtitle">Цифровая визитка / Digital Business Card</p>
+        <p class="subtitle">Цифровая визитка</p>
 
         <!-- Кнопки с вашими контактами -->
         <div class="links-container">
-            <!-- Telegram с вашим ником Umyt -->
             <a href="https://t.me/Umyt" target="_blank" class="btn-link">
                 <i class="fa-brands fa-telegram"></i> Telegram
             </a>
             
-            <!-- Instagram с вашим ником ka.rtal8425 -->
             <a href="https://instagram.com/ka.rtal8425" target="_blank" class="btn-link">
                 <i class="fa-brands fa-instagram"></i> Instagram
             </a>
             
-            <!-- Ваш номер телефона -->
             <a href="tel:+375256614012" class="btn-link">
                 <i class="fa-solid fa-phone"></i> Позвонить
             </a>
             
-            <!-- Ваша почта -->
             <a href="mailto:hojaumyt9@gmail.com" class="btn-link">
                 <i class="fa-solid fa-envelope"></i> Написать на почту
             </a>
         </div>
+
+        <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-arrow-left"></i> Назад к QR-коду</button>
     </div>
+
+    <!-- Библиотека для генерации QR-кода и логика переключения страниц -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Генерируем QR-код
+        new QRCode(document.getElementById("qrcode"), {
+            text: "https://hojaumyt9-pixel.github.io/my-site/",
+            width: 160,
+            height: 160,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+
+        // Функции переключения между экранами
+        function goToCard() {
+            document.getElementById('page-qr').classList.remove('active-screen');
+            document.getElementById('page-qr').classList.add('hidden-screen');
+            
+            document.getElementById('page-card').classList.remove('hidden-screen');
+            document.getElementById('page-card').classList.add('active-screen');
+        }
+
+        function goToQr() {
+            document.getElementById('page-card').classList.remove('active-screen');
+            document.getElementById('page-card').classList.add('hidden-screen');
+            
+            document.getElementById('page-qr').classList.remove('hidden-screen');
+            document.getElementById('page-qr').classList.add('active-screen');
+        }
+    </script>
 
 </body>
 </html>
