@@ -1,56 +1,90 @@
-/* Общий фон и центрирование */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #ffffff;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    background: linear-gradient(135deg, #0f172a, #1e1b4b, #311042);
+    color: #ffffff;
+    padding: 20px;
 }
 
-/* Красивая карточка с эффектом полупрозрачности */
 .card {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 40px;
+    padding: 35px 25px;
     border-radius: 24px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    max-width: 350px;
     width: 100%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Заголовок с неоновым оттенком */
+.avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    color: #ffffff;
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.4);
+}
+
 h1 {
-    font-size: 24px;
-    color: #00dcff;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(0, 220, 255, 0.3);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
 }
 
-/* Текст */
-p {
-    font-size: 15px;
-    color: #b0b0c0;
-    margin-bottom: 30px;
-    line-height: 1.4;
+.subtitle {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 25px;
 }
 
-/* Блок под QR-код */
-#qrcode {
-    padding: 12px;
-    background: white;
-    display: inline-block;
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 14px 20px;
     border-radius: 14px;
-    box-shadow: 0 0 20px rgba(0, 220, 255, 0.3);
-    transition: transform 0.3s ease;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
-/* Легкое увеличение при наведении мыши на QR-код */
-#qrcode:hover {
-    transform: scale(1.05);
+.btn-link:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-link i {
+    font-size: 18px;
+    color: #c084fc;
 }
