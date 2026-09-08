@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umyt07 - Цифровая визитка</title>
-    <meta name="description" content="Официальная цифровая визитка Umyt07. Свяжитесь со мной в один клик.">
-    <meta name="keywords" content="Umyt07, визитка, контакты, соцсети">
+    <meta name="description" content="Официальная цифровая визитка Umyt07. Сохраните мой контакт в один клик.">
+    <meta name="keywords" content="Umyt07, визитка, контакты, vCard">
     
     <!-- Подключаем стили и иконки -->
     <link rel="stylesheet" href="style.css">
@@ -13,24 +13,24 @@
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Только QR-код -->
+    <!-- СТРАНИЦА 1: Только QR-код для сохранения контакта -->
     <div id="page-qr" class="card active-screen">
-        <p class="title-top">Отсканируйте визитку</p>
+        <p class="title-top">Сканируйте для сохранения</p>
         <div class="qr-box" onclick="goToCard()">
             <div id="qrcode"></div>
         </div>
-        <p class="hint-text">Нажмите на QR-код или перейдите далее</p>
-        <button class="btn-next" onclick="goToCard()">Открыть визитку <i class="fa-solid fa-arrow-right"></i></button>
+        <p class="hint-text">Наведите камеру, чтобы сохранить контакт</p>
+        <button class="btn-next" onclick="goToCard()">Открыть контакты <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- СТРАНИЦА 2: Сама визитка с контактами -->
+    <!-- СТРАНИЦА 2: Обычная визитка с кнопками для интернета -->
     <div id="page-card" class="card hidden-screen">
         <h1>Umyt07</h1>
         <p class="subtitle">Цифровая визитка</p>
 
         <!-- Кнопки с вашими контактами -->
         <div class="links-container">
-            <!-- Telegram с вашим актуальным ником Kartal000007 -->
+            <!-- Telegram -->
             <a href="https://t.me/Kartal000007" target="_blank" class="btn-link">
                 <i class="fa-brands fa-telegram"></i> Telegram
             </a>
@@ -57,14 +57,24 @@
     <!-- Библиотека для генерации QR-кода и логика переключения страниц -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Генерируем QR-код
+        // Текст для QR-кода в формате vCard (сохраняет контакт без интернета)
+        const vCardData = 
+`BEGIN:VCARD
+VERSION:3.0
+FN:Umyt07
+TEL:+375256614012
+EMAIL:hojaumyt9@gmail.com
+NOTE:Telegram: t.me/Kartal000007 | Instagram: @ka.rtal8425
+END:VCARD`;
+
+        // Генерируем QR-код с контактными данными
         new QRCode(document.getElementById("qrcode"), {
-            text: "https://hojaumyt9-pixel.github.io/my-site/",
+            text: vCardData,
             width: 160,
             height: 160,
             colorDark : "#000000",
             colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
+            correctLevel : QRCode.CorrectLevel.M
         });
 
         // Функции переключения между экранами
