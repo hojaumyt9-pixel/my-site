@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой стильный сайт</title>
+    <!-- Подключаем файл стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="card">
+        <h1>Привет! Это мой сайт</h1>
+        <p>Отсканируйте QR-код с телефона, чтобы открыть его:</p>
+
+        <!-- Контейнер для QR-кода -->
+        <div id="qrcode"></div>
+    </div>
+
+    <!-- Подключаем библиотеку для генерации QR-кода -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        // Генерация QR-кода (не забудьте при необходимости поменять IP-адрес на ваш)
+        new QRCode(document.getElementById("qrcode"), {
+            text: "http://192.168.0.101:8000",
+            width: 180,
+            height: 180,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
+
+</body>
+</html>

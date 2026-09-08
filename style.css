@@ -1,0 +1,56 @@
+/* Общий фон и центрирование */
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #ffffff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Красивая карточка с эффектом полупрозрачности */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Заголовок с неоновым оттенком */
+h1 {
+    font-size: 24px;
+    color: #00dcff;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px rgba(0, 220, 255, 0.3);
+}
+
+/* Текст */
+p {
+    font-size: 15px;
+    color: #b0b0c0;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+/* Блок под QR-код */
+#qrcode {
+    padding: 12px;
+    background: white;
+    display: inline-block;
+    border-radius: 14px;
+    box-shadow: 0 0 20px rgba(0, 220, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Легкое увеличение при наведении мыши на QR-код */
+#qrcode:hover {
+    transform: scale(1.05);
+}
