@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umyt07 - Цифровая визитка</title>
-    <meta name="description" content="Официальная цифровая визитка Umyt07. Сохраните мой контакт в один клик.">
-    <meta name="keywords" content="Umyt07, визитка, контакты, vCard">
+    <title>Umyt07 - Профессиональный Программист</title>
+    <meta name="description" content="Услуги профессионального программиста Umyt07: разработка сайтов, Telegram-ботов, мобильных приложений.">
+    <meta name="keywords" content="Umyt07, программист, веб-разработчик, создание сайтов, Telegram боты">
     
     <!-- Подключаем стили и иконки -->
     <link rel="stylesheet" href="style.css">
@@ -13,75 +13,102 @@
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Только QR-код для сохранения контакта -->
+    <!-- СТРАНИЦА 1: Экран с QR-кодом (сохранение контакта без интернета) -->
     <div id="page-qr" class="card active-screen">
-        <p class="title-top">Сканируйте для сохранения</p>
+        <div class="code-badge">&lt;/&gt; IT-Визитка</div>
+        <p class="title-top">Отсканируйте контакт</p>
         <div class="qr-box" onclick="goToCard()">
             <div id="qrcode"></div>
         </div>
-        <p class="hint-text">Наведите камеру, чтобы сохранить контакт</p>
-        <button class="btn-next" onclick="goToCard()">Открыть контакты <i class="fa-solid fa-arrow-right"></i></button>
+        <p class="hint-text">Сохраните визитку в один клик (работает офлайн)</p>
+        <button class="btn-next" onclick="goToCard()">Перейти на сайт <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
-    <!-- СТРАНИЦА 2: Обычная визитка с кнопками для интернета -->
-    <div id="page-card" class="card hidden-screen">
-        <h1>Umyt07</h1>
-        <p class="subtitle">Цифровая визитка</p>
+    <!-- СТРАНИЦА 2: Бизнес-сайт портфолио и услуг -->
+    <div id="page-card" class="card hidden-screen business-layout">
+        <!-- Шапка профиля -->
+        <div class="profile-header">
+            <div class="avatar-icon">
+                <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h1>Umyt07</h1>
+            <p class="profession">Профессиональный Программист</p>
+            <p class="bio">Разрабатываю современные сайты, интерактивные веб-приложения и Telegram-боты под ключ.</p>
+        </div>
 
-        <!-- Кнопки с вашими контактами -->
+        <!-- Блок услуг / навыков -->
+        <div class="services-section">
+            <h3>Мои услуги</h3>
+            <div class="service-item">
+                <i class="fa-solid fa-globe"></i>
+                <div>
+                    <h4>Веб-разработка</h4>
+                    <p>Создание сайтов, лендингов и цифровых визиток</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <i class="fa-solid fa-robot"></i>
+                <div>
+                    <h4>Telegram-боты</h4>
+                    <p>Автоматизация, автоответчики и чат-боты</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <div>
+                    <h4>Мобильные приложения</h4>
+                    <p>Конвертация веб-проектов в Android APK</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопки связи -->
         <div class="links-container">
-            <!-- Telegram -->
             <a href="https://t.me/Kartal000007" target="_blank" class="btn-link">
-                <i class="fa-brands fa-telegram"></i> Telegram
+                <i class="fa-brands fa-telegram"></i> Написать в Telegram
             </a>
             
-            <!-- Instagram -->
             <a href="https://instagram.com/ka.rtal8425" target="_blank" class="btn-link">
-                <i class="fa-brands fa-instagram"></i> Instagram
+                <i class="fa-brands fa-instagram"></i> Instagram профиль
             </a>
             
-            <!-- Телефон -->
             <a href="tel:+375256614012" class="btn-link">
-                <i class="fa-solid fa-phone"></i> Позвонить
+                <i class="fa-solid fa-phone"></i> Позвонить мне
             </a>
             
-            <!-- Почта -->
             <a href="mailto:hojaumyt9@gmail.com" class="btn-link">
-                <i class="fa-solid fa-envelope"></i> Написать на почту
+                <i class="fa-solid fa-envelope"></i> Отправить Email
             </a>
         </div>
 
-        <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-arrow-left"></i> Назад к QR-коду</button>
+        <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-qrcode"></i> Показать QR-код</button>
     </div>
 
-    <!-- Библиотека для генерации QR-кода и логика переключения страниц -->
+    <!-- Библиотека генерации QR и логика -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Текст для QR-кода в формате vCard (сохраняет контакт без интернета)
+        // vCard данные для сохранения контакта без интернета
         const vCardData = 
 `BEGIN:VCARD
 VERSION:3.0
-FN:Umyt07
+FN:Umyt07 - Программист
 TEL:+375256614012
 EMAIL:hojaumyt9@gmail.com
-NOTE:Telegram: t.me/Kartal000007 | Instagram: @ka.rtal8425
+NOTE:Разработка сайтов и Telegram-ботов | t.me/Kartal000007
 END:VCARD`;
 
-        // Генерируем QR-код с контактными данными
         new QRCode(document.getElementById("qrcode"), {
             text: vCardData,
-            width: 160,
-            height: 160,
-            colorDark : "#000000",
+            width: 150,
+            height: 150,
+            colorDark : "#0f172a",
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.M
         });
 
-        // Функции переключения между экранами
         function goToCard() {
             document.getElementById('page-qr').classList.remove('active-screen');
             document.getElementById('page-qr').classList.add('hidden-screen');
-            
             document.getElementById('page-card').classList.remove('hidden-screen');
             document.getElementById('page-card').classList.add('active-screen');
         }
@@ -89,7 +116,6 @@ END:VCARD`;
         function goToQr() {
             document.getElementById('page-card').classList.remove('active-screen');
             document.getElementById('page-card').classList.add('hidden-screen');
-            
             document.getElementById('page-qr').classList.remove('hidden-screen');
             document.getElementById('page-qr').classList.add('active-screen');
         }
