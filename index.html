@@ -10,16 +10,28 @@
     <!-- Подключаем стили и иконки -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Фикс для того, чтобы переключатель языков всегда был справа */
+        .lang-switcher {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
 
     <!-- СТРАНИЦА 1: Экран с QR-кодом -->
     <div id="page-qr" class="card active-screen">
-        <!-- Переключатель языков в верхнем правом углу -->
+        <!-- Переключатель языков -->
         <div class="lang-switcher">
             <button onclick="setLanguage('ru')" class="lang-btn active" id="btn-ru">RU</button>
             <button onclick="setLanguage('tm')" class="lang-btn" id="btn-tm">TM</button>
             <button onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</button>
+            <button onclick="setLanguage('en')" class="lang-btn" id="btn-en">EN</button>
         </div>
 
         <div class="code-badge">&lt;/&gt; IT-Визитка</div>
@@ -35,11 +47,12 @@
 
     <!-- СТРАНИЦА 2: Бизнес-сайт портфолио и услуг -->
     <div id="page-card" class="card hidden-screen business-layout">
-        <!-- Переключатель языков в верхнем правом углу -->
+        <!-- Переключатель языков -->
         <div class="lang-switcher">
             <button onclick="setLanguage('ru')" class="lang-btn active" id="btn-ru2">RU</button>
             <button onclick="setLanguage('tm')" class="lang-btn" id="btn-tm2">TM</button>
             <button onclick="setLanguage('tr')" class="lang-btn" id="btn-tr2">TR</button>
+            <button onclick="setLanguage('en')" class="lang-btn" id="btn-en2">EN</button>
         </div>
 
         <!-- Шапка профиля -->
@@ -111,7 +124,7 @@
         <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-qrcode"></i> <span data-i18n="show_qr">Показать QR-код</span></button>
     </div>
 
-    <!-- Логика переключения страниц и языков -->
+    <!-- Логика переключения страниц и языков (RU, TM, TR, EN) -->
     <script>
         const translations = {
             ru: {
@@ -176,6 +189,27 @@
                 btn_call: "Beni Ara",
                 btn_email: "E-posta Gönder",
                 show_qr: "QR Kodu Göster"
+            },
+            en: {
+                scan_title: "Scan the Business Card",
+                scan_hint: "Click the QR or the button below",
+                go_to_site: "Go to Website",
+                profession: "Professional Programmer",
+                bio: "Developing modern websites, interactive web applications, Python scripts, and turnkey Telegram bots.",
+                services_title: "My Services",
+                service_web_title: "Web Development",
+                service_web_desc: "Creation of websites, landing pages, and digital business cards",
+                service_app_title: "Interactive Web Apps",
+                service_app_desc: "Development of mini-games, quizzes, calculators, and web tools",
+                service_vision_title: "Interactive Python Scripts",
+                service_vision_desc: "Creating programs with gesture recognition and 3D animation",
+                service_bot_title: "Telegram Bots",
+                service_bot_desc: "Automation, auto-responders, and chat bots",
+                btn_telegram: "Write on Telegram",
+                btn_instagram: "Instagram Profile",
+                btn_call: "Call Me",
+                btn_email: "Send Email",
+                show_qr: "Show QR Code"
             }
         };
 
@@ -191,15 +225,15 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
+            
             if(lang === 'ru') {
-                document.getElementById('btn-ru').classList.add('active');
-                document.getElementById('btn-ru2').classList.add('active');
+                document.querySelectorAll('#btn-ru, #btn-ru2').forEach(b => b.classList.add('active'));
             } else if(lang === 'tm') {
-                document.getElementById('btn-tm').classList.add('active');
-                document.getElementById('btn-tm2').classList.add('active');
+                document.querySelectorAll('#btn-tm, #btn-tm2').forEach(b => b.classList.add('active'));
             } else if(lang === 'tr') {
-                document.getElementById('btn-tr').classList.add('active');
-                document.getElementById('btn-tr2').classList.add('active');
+                document.querySelectorAll('#btn-tr, #btn-tr2').forEach(b => b.classList.add('active'));
+            } else if(lang === 'en') {
+                document.querySelectorAll('#btn-en, #btn-en2').forEach(b => b.classList.add('active'));
             }
 
             localStorage.setItem('site_lang', lang);
