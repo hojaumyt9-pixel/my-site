@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой стильный сайт</title>
+    
+    <!-- Главные ключевые слова и описание для Google -->
+    <title>KARTAL - Официальный сайт</title>
+    <meta name="description" content="Добро пожаловать на персональный сайт проекта KARTAL. Узнайте больше здесь.">
+    <meta name="keywords" content="KARTAL, картал, мой сайт, проект">
+    
     <!-- Подключаем файл стилей -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="card">
-        <h1>Привет! Это мой сайт</h1>
-        <p>Отсканируйте QR-код с телефона, чтобы открыть его:</p>
+        <h1>KARTAL</h1>
+        <p>Добро пожаловать на мой сайт!</p>
 
-        <!-- Контейнер для QR-кода -->
+        <!-- Контейнер для QR-кода (если он вам еще нужен, можно оставить) -->
         <div id="qrcode"></div>
     </div>
 
     <!-- Подключаем библиотеку для генерации QR-кода -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
-        // Генерация QR-кода (не забудьте при необходимости поменять IP-адрес на ваш)
+        // Сюда можно вставить вашу новую ссылку с GitHub Pages, когда она появится!
         new QRCode(document.getElementById("qrcode"), {
-            text: "http://192.168.0.101:8000",
+            text: "https://hojaumyt9-pixel.github.io/my-site/",
             width: 180,
             height: 180,
             colorDark : "#000000",
