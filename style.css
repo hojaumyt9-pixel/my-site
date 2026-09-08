@@ -48,6 +48,37 @@ body {
     display: block;
 }
 
+/* Стили для переключателя языков в верхнем правом углу */
+.lang-switcher {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.lang-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.lang-btn.active {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: #818cf8;
+    color: #818cf8;
+}
+
 .code-badge {
     display: inline-block;
     background: rgba(99, 102, 241, 0.15);
@@ -82,13 +113,9 @@ body {
     transform: scale(1.02);
 }
 
-#qrcode {
-    display: flex;
-    justify-content: center;
-}
-
-#qrcode img {
+.qr-image {
     border-radius: 6px;
+    display: block;
 }
 
 .hint-text {

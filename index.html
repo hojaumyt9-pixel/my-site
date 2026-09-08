@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Umyt07 - Профессиональный Программист</title>
-    <meta name="description" content="Услуги профессионального программиста Umyt07: разработка сайтов, Telegram-ботов, мобильных приложений.">
-    <meta name="keywords" content="Umyt07, программист, веб-разработчик, создание сайтов, Telegram боты">
+    <meta name="description" content="Услуги профессионального программиста Umyt07: разработка сайтов, интерактивных приложений, ботов и визуальных скриптов.">
+    <meta name="keywords" content="Umyt07, программист, веб-разработчик, создание сайтов, Telegram боты, Python, веб-приложения">
     
     <!-- Подключаем стили и иконки -->
     <link rel="stylesheet" href="style.css">
@@ -13,51 +13,78 @@
 </head>
 <body>
 
-    <!-- СТРАНИЦА 1: Экран с QR-кодом (сохранение контакта без интернета) -->
+    <!-- СТРАНИЦА 1: Экран с QR-кодом -->
     <div id="page-qr" class="card active-screen">
-        <div class="code-badge">&lt;/&gt; IT-Визитка</div>
-        <p class="title-top">Отсканируйте контакт</p>
-        <div class="qr-box" onclick="goToCard()">
-            <div id="qrcode"></div>
+        <!-- Переключатель языков в верхнем правом углу -->
+        <div class="lang-switcher">
+            <button onclick="setLanguage('ru')" class="lang-btn active" id="btn-ru">RU</button>
+            <button onclick="setLanguage('tm')" class="lang-btn" id="btn-tm">TM</button>
+            <button onclick="setLanguage('tr')" class="lang-btn" id="btn-tr">TR</button>
         </div>
-        <p class="hint-text">Сохраните визитку в один клик (работает офлайн)</p>
-        <button class="btn-next" onclick="goToCard()">Перейти на сайт <i class="fa-solid fa-arrow-right"></i></button>
+
+        <div class="code-badge">&lt;/&gt; IT-Визитка</div>
+        <p class="title-top" data-i18n="scan_title">Отсканируйте визитку</p>
+        
+        <div class="qr-box" onclick="goToCard()">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=https://hojaumyt9-pixel.github.io/my-site/" alt="QR Код визитки" class="qr-image">
+        </div>
+        
+        <p class="hint-text" data-i18n="scan_hint">Нажмите на QR или кнопку ниже</p>
+        <button class="btn-next" onclick="goToCard()"><span data-i18n="go_to_site">Перейти на сайт</span> <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 
     <!-- СТРАНИЦА 2: Бизнес-сайт портфолио и услуг -->
     <div id="page-card" class="card hidden-screen business-layout">
+        <!-- Переключатель языков в верхнем правом углу -->
+        <div class="lang-switcher">
+            <button onclick="setLanguage('ru')" class="lang-btn active" id="btn-ru2">RU</button>
+            <button onclick="setLanguage('tm')" class="lang-btn" id="btn-tm2">TM</button>
+            <button onclick="setLanguage('tr')" class="lang-btn" id="btn-tr2">TR</button>
+        </div>
+
         <!-- Шапка профиля -->
         <div class="profile-header">
             <div class="avatar-icon">
                 <i class="fa-solid fa-laptop-code"></i>
             </div>
             <h1>Umyt07</h1>
-            <p class="profession">Профессиональный Программист</p>
-            <p class="bio">Разрабатываю современные сайты, интерактивные веб-приложения и Telegram-боты под ключ.</p>
+            <p class="profession" data-i18n="profession">Профессиональный Программист</p>
+            <p class="bio" data-i18n="bio">Разрабатываю современные сайты, интерактивные веб-приложения, Python-скрипты и Telegram-боты под ключ.</p>
         </div>
 
-        <!-- Блок услуг / навыков -->
+        <!-- Блок услуг -->
         <div class="services-section">
-            <h3>Мои услуги</h3>
+            <h3 data-i18n="services_title">Мои услуги</h3>
+            
             <div class="service-item">
                 <i class="fa-solid fa-globe"></i>
                 <div>
-                    <h4>Веб-разработка</h4>
-                    <p>Создание сайтов, лендингов и цифровых визиток</p>
+                    <h4 data-i18n="service_web_title">Веб-разработка</h4>
+                    <p data-i18n="service_web_desc">Создание сайтов, лендингов и цифровых визиток</p>
                 </div>
             </div>
+
+            <div class="service-item">
+                <i class="fa-solid fa-gamepad"></i>
+                <div>
+                    <h4 data-i18n="service_app_title">Интерактивные веб-приложения</h4>
+                    <p data-i18n="service_app_desc">Разработка мини-игр, тестов, калькуляторов и веб-инструментов</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <i class="fa-solid fa-hand-sparkles"></i>
+                <div>
+                    <h4 data-i18n="service_vision_title">Интерактивные Python скрипты</h4>
+                    <p data-i18n="service_vision_desc">Создание программ с распознаванием жестов и 3D-анимацией</p>
+                </div>
+            </div>
+
             <div class="service-item">
                 <i class="fa-solid fa-robot"></i>
                 <div>
-                    <h4>Telegram-боты</h4>
-                    <p>Автоматизация, автоответчики и чат-боты</p>
-                </div>
-            </div>
-            <div class="service-item">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-                <div>
-                    <h4>Мобильные приложения</h4>
-                    <p>Конвертация веб-проектов в Android APK</p>
+                    <h4 data-i18n="service_bot_title">Telegram-боты</h4>
+                    <p data-i18n="service_bot_desc">Автоматизация, автоответчики и чат-боты</p>
                 </div>
             </div>
         </div>
@@ -65,46 +92,123 @@
         <!-- Кнопки связи -->
         <div class="links-container">
             <a href="https://t.me/Kartal000007" target="_blank" class="btn-link">
-                <i class="fa-brands fa-telegram"></i> Написать в Telegram
+                <i class="fa-brands fa-telegram"></i> <span data-i18n="btn_telegram">Написать в Telegram</span>
             </a>
             
             <a href="https://instagram.com/ka.rtal8425" target="_blank" class="btn-link">
-                <i class="fa-brands fa-instagram"></i> Instagram профиль
+                <i class="fa-brands fa-instagram"></i> <span data-i18n="btn_instagram">Instagram профиль</span>
             </a>
             
             <a href="tel:+375256614012" class="btn-link">
-                <i class="fa-solid fa-phone"></i> Позвонить мне
+                <i class="fa-solid fa-phone"></i> <span data-i18n="btn_call">Позвонить мне</span>
             </a>
             
             <a href="mailto:hojaumyt9@gmail.com" class="btn-link">
-                <i class="fa-solid fa-envelope"></i> Отправить Email
+                <i class="fa-solid fa-envelope"></i> <span data-i18n="btn_email">Отправить Email</span>
             </a>
         </div>
 
-        <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-qrcode"></i> Показать QR-код</button>
+        <button class="btn-back" onclick="goToQr()"><i class="fa-solid fa-qrcode"></i> <span data-i18n="show_qr">Показать QR-код</span></button>
     </div>
 
-    <!-- Библиотека генерации QR и логика -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Логика переключения страниц и языков -->
     <script>
-        // vCard данные для сохранения контакта без интернета
-        const vCardData = 
-`BEGIN:VCARD
-VERSION:3.0
-FN:Umyt07 - Программист
-TEL:+375256614012
-EMAIL:hojaumyt9@gmail.com
-NOTE:Разработка сайтов и Telegram-ботов | t.me/Kartal000007
-END:VCARD`;
+        const translations = {
+            ru: {
+                scan_title: "Отсканируйте визитку",
+                scan_hint: "Нажмите на QR или кнопку ниже",
+                go_to_site: "Перейти на сайт",
+                profession: "Профессиональный Программист",
+                bio: "Разрабатываю современные сайты, интерактивные веб-приложения, Python-скрипты и Telegram-боты под ключ.",
+                services_title: "Мои услуги",
+                service_web_title: "Веб-разработка",
+                service_web_desc: "Создание сайтов, лендингов и цифровых визиток",
+                service_app_title: "Интерактивные веб-приложения",
+                service_app_desc: "Разработка мини-игр, тестов, калькуляторов и веб-инструментов",
+                service_vision_title: "Интерактивные Python скрипты",
+                service_vision_desc: "Создание программ с распознаванием жестов и 3D-анимацией",
+                service_bot_title: "Telegram-боты",
+                service_bot_desc: "Автоматизация, автоответчики и чат-боты",
+                btn_telegram: "Написать в Telegram",
+                btn_instagram: "Instagram профиль",
+                btn_call: "Позвонить мне",
+                btn_email: "Отправить Email",
+                show_qr: "Показать QR-код"
+            },
+            tm: {
+                scan_title: "Wizitkany skanirläň",
+                scan_hint: "QR kody ýa-da aşakdaky düwmä basyň",
+                go_to_site: "Saýta geçmek",
+                profession: "Hünärmen Programmist",
+                bio: "Häzirki zaman saýtlary, interaktiw web goýmalary, Python skriptlerini we Telegram botlary döredýärin.",
+                services_title: "Hyzmatlarym",
+                service_web_title: "Web ösüş",
+                service_web_desc: "Saýtlar, lendingler we sanly wizitkalar döretmek",
+                service_app_title: "Interaktiw web goýmalar",
+                service_app_desc: "Mini oýunlar, testler, kalkulyatorlar we web gurallary döretmek",
+                service_vision_title: "Interaktiw Python skriptleri",
+                service_vision_desc: "Jestleri tanamak we 3D animasiýa programmalary döretmek",
+                service_bot_title: "Telegram botlary",
+                service_bot_desc: "Awtomatlaşdyryş we çat-botlar",
+                btn_telegram: "Telegram-da ýazmak",
+                btn_instagram: "Instagram profili",
+                btn_call: "Jaň etmek",
+                btn_email: "Hat ugratmak",
+                show_qr: "QR kody görkezmek"
+            },
+            tr: {
+                scan_title: "Kartviziti Tarayın",
+                scan_hint: "QR koda veya aşağıdaki düğmeye tıklayın",
+                go_to_site: "Siteye Git",
+                profession: "Profesyonel Programcı",
+                bio: "Modern web siteleri, interaktif web uygulamaları, Python betikleri ve anahtar teslim Telegram botları geliştiriyorum.",
+                services_title: "Hizmetlerim",
+                service_web_title: "Web Geliştirme",
+                service_web_desc: "Web siteleri, açılış sayfaları ve dijital kartvizitler",
+                service_app_title: "İnteraktif Web Uygulamaları",
+                service_app_desc: "Mini oyunlar, testler, hesap makineleri ve web araçları geliştirme",
+                service_vision_title: "İnteraktif Python Betikleri",
+                service_vision_desc: "El hareketi algılama ve 3D animasyonlu programlar geliştirme",
+                service_bot_title: "Telegram Botları",
+                service_bot_desc: "Otomasyon, otomatik yanıtlayıcılar ve sohbet botları",
+                btn_telegram: "Telegram'dan Yaz",
+                btn_instagram: "Instagram Profili",
+                btn_call: "Beni Ara",
+                btn_email: "E-posta Gönder",
+                show_qr: "QR Kodu Göster"
+            }
+        };
 
-        new QRCode(document.getElementById("qrcode"), {
-            text: vCardData,
-            width: 150,
-            height: 150,
-            colorDark : "#0f172a",
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.M
-        });
+        function setLanguage(lang) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            if(lang === 'ru') {
+                document.getElementById('btn-ru').classList.add('active');
+                document.getElementById('btn-ru2').classList.add('active');
+            } else if(lang === 'tm') {
+                document.getElementById('btn-tm').classList.add('active');
+                document.getElementById('btn-tm2').classList.add('active');
+            } else if(lang === 'tr') {
+                document.getElementById('btn-tr').classList.add('active');
+                document.getElementById('btn-tr2').classList.add('active');
+            }
+
+            localStorage.setItem('site_lang', lang);
+        }
+
+        window.onload = function() {
+            const savedLang = localStorage.getItem('site_lang') || 'ru';
+            setLanguage(savedLang);
+        };
 
         function goToCard() {
             document.getElementById('page-qr').classList.remove('active-screen');
