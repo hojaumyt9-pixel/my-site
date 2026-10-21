@@ -1,28 +1,36 @@
 const http = require('http');
-const { WebSocketServer } = require('ws');
+const { WebSocketServer, WebSocket } = require('ws');
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Signaling server is running!\n');
+  res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
+  res.end('Сигнальный сервер работает!\n');
 });
 
 const wss = new WebSocketServer({ server });
-const clients = new Map(); // Список подключенных клиентов: ID -> WebSocket
+const clients = new Map(); // Хранилище: ID -> WebSocket
 
 wss.on('connection', (ws) => {
   ws.on('message', (message) => {
     try {
       const data = JSON.parse(message);
 
-      // Регистрация клиента по его ID
-      if (data.type === 'register') {
-        clients.set(data.id, ws);
-        ws.userId = data.id;
-        console.log(`Пользователь зарегистрирован с ID: ${data.id}`);
+      // 1. Пинг от клиента для удержания связи
+      if (data.type === 'ping') {
+        if (ws.readyState === WebSocket.OPEN) {
+          ws.send(JSON.stringify({ type: 'pong' }));
+        }
         return;
       }
 
-      // Пересылка сообщения или вызова конкретному получателю (targetId)
+      // 2. Регистрация нового ID
+      if (data.type === 'register') {
+        clients.set(data.id, ws);
+        ws.userId = data.id;
+        console.log(`[Онлайн] Зарегистрирован ID: ${data.id}`);
+        return;
+      }
+
+      // 3. Пересылка чат-сообщений или вызовов
       if (data.targetId && clients.has(data.targetId)) {
         const targetWs = clients.get(data.targetId);
         if (targetWs.readyState === WebSocket.OPEN) {
@@ -33,14 +41,14 @@ wss.on('connection', (ws) => {
         }
       }
     } catch (e) {
-      console.error('Ошибка обработки сообщения:', e);
+      console.error('Ошибка обработки:', e);
     }
   });
 
   ws.on('close', () => {
     if (ws.userId) {
       clients.delete(ws.userId);
-      console.log(`Пользователь отключился: ${ws.userId}`);
+      console.log(`[Офлайн] Отключился ID: ${ws.userId}`);
     }
   });
 });
